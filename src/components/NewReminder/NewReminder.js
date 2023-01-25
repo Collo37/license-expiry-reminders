@@ -25,12 +25,12 @@ const NewReminder = () => {
 
         const data = await submitRes.json();
 
-        const cronRes = await fetch("/api/cron_job", {
-            method: "POST",
-            body: JSON.stringify(reminder),
-            headers: {"content-Type": "application/json"}
-        });
-        const cronData = await cronRes.json();
+        // const cronRes = await fetch("/api/cron_job", {
+        //     method: "POST",
+        //     body: JSON.stringify(reminder),
+        //     headers: {"content-Type": "application/json"}
+        // });
+        // const cronData = await cronRes.json();
         
         global.window.location.reload();
     };
