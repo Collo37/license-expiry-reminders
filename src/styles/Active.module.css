@@ -1,0 +1,13 @@
+.container {
+    height: 100vh;
+    min-height: 600px;
+    width: calc(100% - 300px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 80px 20px 20px 20px;
+  }
+
+  .section_title {
+    font-size: 50px;
+  }

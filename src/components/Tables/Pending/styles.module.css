@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    max-width: 650px;
+    height: 350px;
+}
+
+.section_title {
+    margin-bottom: 20px;
+    font-size: 25px;
+}

@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    font-size: 34px;
+}
+
+.form_container {
+    width: 500px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.login_button {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 50px;
+    background-color: var(--blue);
+    cursor: pointer;
+}

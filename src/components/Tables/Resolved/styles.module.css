@@ -1,0 +1,14 @@
+.container {
+    margin: 150px 0 0 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 650px;
+    height: 320px;
+    border-radius: 10px;
+    background-color:  rgb(215, 223, 252);
+}
+
+.section_title {
+    margin-bottom: 20px;
+    font-size: 25px;
+}
