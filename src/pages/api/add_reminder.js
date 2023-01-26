@@ -1,5 +1,5 @@
+import addCronJob from "@/globalFunctions/addCronJob";
 import { MongoClient } from "mongodb";
-import nodeCron from "node-cron";
 
 export default async function handler (req, res) {
     try {
@@ -14,9 +14,7 @@ export default async function handler (req, res) {
 
         client.close();
 
-        nodeCron.schedule("30 * * * * *", () => {
-            console.log("Loading scheduled tasks from add_reminder");
-        })
+        addCronJob()
         res.status(201).json({
             message: "Created",
             response

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { hideModal } from '@/state/modalSlice';
 
 import styles from "./styles.module.css";
+import addReminder from '@/globalFunctions/addReminder';
 
 const NewReminder = () => {
     const { visible } = useSelector(state => state.showModal)
@@ -17,22 +18,7 @@ const NewReminder = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const submitRes = await fetch(`/api/add_reminder/`, {
-            method: "POST",
-            body: JSON.stringify(reminder),
-            headers: { "content-Type": "application/json" }
-        });
-
-        const data = await submitRes.json();
-
-        // const cronRes = await fetch("/api/cron_job", {
-        //     method: "POST",
-        //     body: JSON.stringify(reminder),
-        //     headers: {"content-Type": "application/json"}
-        // });
-        // const cronData = await cronRes.json();
-        
-        global.window.location.reload();
+        addReminder(reminder);
     };
 
     return (

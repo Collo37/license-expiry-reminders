@@ -11,16 +11,15 @@ const OAuth2Client = new OAuth2(
 
 OAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-export default async function handler(req, res) {
+export default async function sendMail(details) {
   try {
     // create transporter
-    const { registration, dateDue } = req.body;
+    const { registration, dateDue } = details;
     console.log("Starting mail function...");
-    console.log(req.body);
 
     // send email
     const accessToken = await OAuth2Client.getAccessToken();
-    console.log("access token ", accessToken);
+
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -32,7 +31,7 @@ export default async function handler(req, res) {
         accessToken,
       },
     });
-    console.log("transporter created");
+
     // create mail options
     let mailOptions = {
       from: "cowlduor37@gmail.com",
@@ -41,8 +40,6 @@ export default async function handler(req, res) {
       text: `The license expiry date for ${registration} is ${dateDue}`,
     };
 
-    console.log("mail options ", mailOptions);
-
     // send email
     const result = await transporter.sendMail(mailOptions, (err, data) => {
       if (err) {
@@ -50,13 +47,10 @@ export default async function handler(req, res) {
         return;
       }
       console.log("Email sent");
-      res.json({
-        status: "Sent",
-        data: result,
-      });
       transporter.close();
+      return data;
     });
   } catch (error) {
-    res.send(error);
+    return error
   }
 }
