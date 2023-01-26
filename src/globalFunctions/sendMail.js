@@ -19,6 +19,7 @@ export default async function sendMail(details) {
 
     // send email
     const accessToken = await OAuth2Client.getAccessToken();
+    console.log("access token: ", accessToken);
 
     let transporter = nodemailer.createTransport({
       service: "gmail",
@@ -31,6 +32,8 @@ export default async function sendMail(details) {
         accessToken,
       },
     });
+
+    console.log("Transporter created")
 
     // create mail options
     let mailOptions = {
