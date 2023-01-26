@@ -17,7 +17,6 @@ const SignIn = () => {
     const res = await signIn("credentials", {
       email,
       password,
-      // redirect: false
     });
   };
 

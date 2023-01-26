@@ -5,12 +5,14 @@ import { MongoClient } from "mongodb";
 
 export const authOptions = {
     session: {
-        strategy: "jwt"
+        strategy: "jwt",
     },
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
             type: "credentials",
             credentials: {
+                
             },
             pages: {
                 signIn: "/auth/signin",
@@ -26,27 +28,29 @@ export const authOptions = {
                         };
                         
                         const client = new MongoClient(uri, options);
-                        console.log(client);
                     }
 
                     connectDB();
                     
                     const { email, password } = credentials;
+                    console.log(email, password);
                     // get user and password from database
 
                     // dummy usernames
                     const user = {
-                        email: "cowlduor37@gmail.com",
+                        email: "test@test.com",
                         password: "1234567890",
                     };
 
                     if(user.email === email &&  user.password === password) {
                         return {
+                            status: "success",
                             id: "1234",
                             name: "Collins Oduor"
                         }
-                    }
+                    } 
                 } catch(error) {
+                    console.log(error)
                     throw new Error(error);
                 }
             }

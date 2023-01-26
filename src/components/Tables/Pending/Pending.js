@@ -31,7 +31,7 @@ const Pending = ({data}) => {
     return (
         <section className={styles.container}>
             <h3 className={styles.section_title}>Active Reminders</h3>
-            <DataGrid style={{borderRadius: 10, borderColor: "#1976D2", marginBottom: 30, fontFamily: "Poppins", padding: 10}} rows={rows} columns={columns} components={{ Toolbar: GridToolbar }} />
+            <DataGrid style={{borderRadius: 10, borderColor: "#1976D2", marginBottom: 30, fontFamily: "Poppins", padding: 10, minWidth: 300}} rows={rows} columns={columns} components={{ Toolbar: GridToolbar }} />
         </section>
     )
 }

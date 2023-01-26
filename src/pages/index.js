@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import Layout from "@/components/Layout/Layout";
 import NewReminder from "@/components/NewReminder/NewReminder";
+import TopBar from "@/components/Layout/TopBar/TopBar";
 
 import styles from "@/styles/Home.module.css";
 import { MongoClient } from "mongodb";
@@ -34,8 +35,17 @@ export default function Home({ data }) {
         </Head>
         <div className={styles.container}>
           <section className={styles.widget}>
-            <h3 className={styles.widget_title}>Calendar</h3>
-            <CalendarPicker disablePast view="day" />
+            <h3 className={styles.logo}>{`Insurance${"\n"}Reminder`}</h3>
+            <div className={styles.calendar_container}>
+              <h3 className={styles.widget_title}>Calendar</h3>
+              <CalendarPicker
+                onChange={() => {
+                  console.log("picked");
+                }}
+                view="day"
+              />
+            </div>
+            <TopBar user={session?.data?.user} />
           </section>
           <main className={styles.main}>
             <Layout user={session?.data?.user} data={data} />
@@ -51,7 +61,7 @@ export const getServerSideProps = async () => {
   const client = await MongoClient.connect(process.env.DATABASE_URL, {
     family: 4,
   });
-  
+
   const remindersCollection = client.db().collection("reminders");
   const remindersArray = await remindersCollection.find().toArray();
 

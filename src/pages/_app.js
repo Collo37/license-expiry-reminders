@@ -17,14 +17,17 @@ export default function App({ Component, pageProps }) {
   const { asPath } = useRouter();
 
   useEffect(() => {
-    console.log(asPath)
-    if (asPath === "/auth/signin") {
-      setShowNav(false);
-    } else {
+    if (
+      asPath === "/" ||
+      asPath === "/active" ||
+      asPath === "/resolved" ||
+      asPath === "all"
+    ) {
       setShowNav(true);
+    } else {
+      setShowNav(false);
     }
-  
-  }, [asPath])
+  }, [asPath]);
   return (
     <SessionProvider session={pageProps.session}>
       <Provider store={store}>

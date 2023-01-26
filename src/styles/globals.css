@@ -31,5 +31,14 @@ body {
   color: var(--blue);
   font-weight: 700;
   font-size: 18px;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.header_class_style_white {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
 }
 

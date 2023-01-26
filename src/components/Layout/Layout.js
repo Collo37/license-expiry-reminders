@@ -9,18 +9,16 @@ import Pending from '../Tables/Pending/Pending';
 import Resolved from '../Tables/Resolved/Resolved';
 import ContentWrapper from './ContentWrapper/ContentWrapper';
 import styles from "./Layout.module.css";
-import TopBar from './TopBar/TopBar';
 
-const Layout = ({user, data}) => {
+const Layout = ({data}) => {
   const dispatch = useDispatch();
 
   const handleShowModal = () => dispatch(showModal())
 
   return (
     <div className={styles.container}>
-      <TopBar user={user}/>
       <ContentWrapper>
-        <Button endIcon={<AiOutlineFileAdd />} variant="outlined" style={{height: 50, marginBottom: 40, marginTop: 120}} onClick={handleShowModal}>New Reminder</Button>
+        <Button endIcon={<AiOutlineFileAdd />} variant="outlined" style={{height: 50, marginBottom: 40}} onClick={handleShowModal}>New Reminder</Button>
         <Pending data={data} />
         <Resolved data={data} />
       </ContentWrapper>

@@ -20,7 +20,7 @@ const TopBar = ({ user }) => {
     return (
         <div className={styles.container}>
             <p className={styles.greeting}>{user?.name}</p>
-            <Button onClick={handleSignOut} variant="outlined" style={{height: 50, marginLeft: 10, marginRight: 50}} color="error" >Log Out</Button>
+            <Button onClick={handleSignOut} variant="outlined" style={{height: 50, marginLeft: 10}} color="error" >Log Out</Button>
         </div>
     )
 }

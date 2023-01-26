@@ -8,10 +8,10 @@ import { FaGlobe, FaHandHolding, FaSuperpowers } from "react-icons/fa";
 
 const Navbar = () => {
   const routes = [
-    { route: "Dashboard", icon: <AiFillDashboard/> },
-    { route: "Active", icon: <FaSuperpowers/> },
-    { route: "Resolved", icon: <FaHandHolding/> },
-    { route: "All", icon: <FaGlobe/> },
+    { route: "Dashboard", icon: <AiFillDashboard /> },
+    { route: "Active", icon: <FaSuperpowers /> },
+    { route: "Resolved", icon: <FaHandHolding /> },
+    { route: "All", icon: <FaGlobe /> },
   ];
 
   const router = useRouter();
@@ -23,13 +23,16 @@ const Navbar = () => {
           <Button
             variant="outlined"
             sx={{ width: 150 }}
+            className={styles.button}
             title={route.route}
-            style={{ height: 50, textAlign: "left" }}
+            style={{ height: 50, marginTop: 10, textAlign: "left" }}
             endIcon={route.icon}
             key={index}
             onClick={() =>
               router.push(
-                route.route === "Dashboard" ? "/" : `/${route.route.toLowerCase()}`
+                route.route === "Dashboard"
+                  ? "/"
+                  : `/${route.route.toLowerCase()}`
               )
             }
           >
