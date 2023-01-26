@@ -10,6 +10,8 @@ import styles from "@/styles/Home.module.css";
 import { MongoClient } from "mongodb";
 import { CalendarPicker } from "@mui/x-date-pickers";
 
+import addCronJob from "@/globalFunctions/addCronJob";
+
 export default function Home({ data }) {
   const [authenticated, setAuthenticated] = useState(false);
   const session = useSession();
@@ -64,6 +66,7 @@ export const getServerSideProps = async () => {
 
   const remindersCollection = client.db().collection("reminders");
   const remindersArray = await remindersCollection.find().toArray();
+  addCronJob()
 
   client.close();
 
