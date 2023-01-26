@@ -5,7 +5,7 @@ import sendMail from "./sendMail";
 
 export default async function addCronJob() {
   // scheduling a job
-  let task = cron.schedule("30 * * * * *", async () => {
+  let task = cron.schedule("10 18 * * * *", async () => {
     const client = await MongoClient.connect(process.env.DATABASE_URL, {
       family: 4,
     });
