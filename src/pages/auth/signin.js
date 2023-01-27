@@ -28,35 +28,41 @@ const SignIn = () => {
         <title>Sign in</title>
       </Head>
       <div className={styles.container}>
-        <h3 className={styles.heading}>
-          {session.status === "loading" ? "Authenticating" : "Welcome"}
-        </h3>
         <form
           className={styles.form_container}
           onSubmit={(event) => handleSubmit(event, email, password)}
         >
-          <TextField
-            label="Email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <TextField
-            label="Pasword"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          {/* <button className={styles.login_button} onSubmit={(event) => handleSubmit(event, email, password)}>Login</button> */}
-          <Button
-            variant="outlined"
-            type="submit"
-            onSubmit={(event) => handleSubmit(event, email, password)}
-          >
-            Login
-          </Button>
+          <span className={styles.logo}>R</span>
+          <h3 className={styles.heading}>
+            {session.status === "loading" ? "Authenticating" : "Login"}
+          </h3>
+          <div className={styles.input_elements}>
+            <TextField
+              label="Email"
+              type="email"
+              placeholder="Email"
+              value={email}
+              style={{ width: "100%", maxWidth: 350 }}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <TextField
+              label="Pasword"
+              type="password"
+              placeholder="Password"
+              value={password}
+              style={{ width: "100%", maxWidth: 350 }}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            {/* <button className={styles.login_button} onSubmit={(event) => handleSubmit(event, email, password)}>Login</button> */}
+            <Button
+              variant="outlined"
+              type="submit"
+              style={{ height: 50, width: "100%", maxWidth: 350 }}
+              onSubmit={(event) => handleSubmit(event, email, password)}
+            >
+              Login
+            </Button>
+          </div>
         </form>
       </div>
     </>
