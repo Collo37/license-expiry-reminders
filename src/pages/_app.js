@@ -13,7 +13,7 @@ import "@/styles/globals.css";
 import MiniDrawer from "@/components/MiniDrawer/MiniDrawer";
 
 export default function App({ Component, pageProps }) {
-  const [showNav, setShowNav] = useState(false);
+  const [navShown, setNavShown] = useState(false);
 
   const { asPath } = useRouter();
 
@@ -24,16 +24,17 @@ export default function App({ Component, pageProps }) {
       asPath === "/resolved" ||
       asPath === "all"
     ) {
-      setShowNav(true);
+      setNavShown(true);
     } else {
-      setShowNav(false);
+      setNavShown(false);
     }
   }, [asPath]);
   return (
     <SessionProvider session={pageProps.session}>
       <Provider store={store}>
         <LocalizationProvider dateAdapter={AdapterMoment}>
-          {showNav ? <MiniDrawer /> : null}
+          {navShown ? <MiniDrawer /> : null}
+          <Navbar />
           <Component {...pageProps} />
         </LocalizationProvider>
       </Provider>

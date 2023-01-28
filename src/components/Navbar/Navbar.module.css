@@ -1,17 +1,29 @@
 .container {
-    width: 200px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
     height: 100vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 80;
+    align-items: flex-end;
+    z-index: 100;
+    padding: 40px;
 }
 
+.close_button {
+    align-self: flex-end;
+}
+
+.calendar_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
 .nav_link {
     text-decoration: none;
@@ -21,7 +33,6 @@
     color: #fff;
     font-size: 20px;
 }
-
 
 @media (max-width: 1110px) {
     .container {

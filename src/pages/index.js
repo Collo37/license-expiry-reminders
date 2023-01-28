@@ -48,6 +48,7 @@ export default function Home({ data }) {
                 onChange={() => {
                   console.log("picked");
                 }}
+                style={{overflow: "hidden"}}
                 view="day"
               />
             </div>

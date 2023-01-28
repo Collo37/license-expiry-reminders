@@ -17,6 +17,10 @@
   color: var(--blue);
 }
 
+.menu_button {
+  display: none;
+}
+
 @media (max-width: 1220px) {
   .container {
     position: relative;
@@ -26,7 +30,22 @@
     height: 100px;
     width: 200px;
     margin: 0;
-    padding-right: 20px;
     text-align: right;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button, .greeting {
+    display: none;
+  }
+
+  .menu_button {
+    display: flex;
   }
 }
