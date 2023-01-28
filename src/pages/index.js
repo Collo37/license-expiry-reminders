@@ -36,6 +36,10 @@ export default function Home({ data }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className={styles.container}>
+          <main className={styles.main}>
+            <Layout user={session?.data?.user} data={data} />
+            <NewReminder />
+          </main>
           <section className={styles.widget}>
             <h3 className={styles.logo}>{`Insurance${"\n"}Reminder`}</h3>
             <div className={styles.calendar_container}>
@@ -49,10 +53,6 @@ export default function Home({ data }) {
             </div>
             <TopBar user={session?.data?.user} />
           </section>
-          <main className={styles.main}>
-            <Layout user={session?.data?.user} data={data} />
-            <NewReminder />
-          </main>
         </div>
       </>
     )
@@ -66,7 +66,7 @@ export const getServerSideProps = async () => {
 
   const remindersCollection = client.db().collection("reminders");
   const remindersArray = await remindersCollection.find().toArray();
-  addCronJob()
+  addCronJob();
 
   client.close();
 

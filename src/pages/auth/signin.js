@@ -8,6 +8,7 @@ import { Button, TextField } from "@mui/material";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [status, setStatus] = useState("loading")
 
   const session = useSession();
 
@@ -20,6 +21,10 @@ const SignIn = () => {
     });
   };
 
+  useEffect(() => {
+    setStatus(session.status)
+  }, [session.status])
+
   if (session.status === "authenticated") window.location.replace("/");
 
   return (
@@ -30,13 +35,15 @@ const SignIn = () => {
       <div className={styles.container}>
         <form
           className={styles.form_container}
+          style={session.status === "unauthenticated" ? {height: 500} : {}}
           onSubmit={(event) => handleSubmit(event, email, password)}
         >
           <span className={styles.logo}>R</span>
-          <h3 className={styles.heading}>
-            {session.status === "loading" ? "Authenticating" : "Login"}
-          </h3>
-          <div className={styles.input_elements}>
+          <h3 className={styles.heading} style={session.status !== "unauthenticated" ? {display: "none"} : {display: "block"}}>Login</h3>
+          <h3 className={styles.heading} style={session.status !== "authenticated" ? {display: "none"} : {display: "block"}}>Redirecting...</h3>
+          <h3 className={styles.heading} style={session.status !== "loading" ? {display: "none"} : {display: "block"}}>Loading...</h3>
+          {session.status !== "authenticated" ? (
+            <div className={styles.input_elements}>
             <TextField
               label="Email"
               type="email"
@@ -63,6 +70,7 @@ const SignIn = () => {
               Login
             </Button>
           </div>
+          ) : null}
         </form>
       </div>
     </>

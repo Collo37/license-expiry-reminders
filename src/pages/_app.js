@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import store from "@/state/store";
 
 import "@/styles/globals.css";
+import MiniDrawer from "@/components/MiniDrawer/MiniDrawer";
 
 export default function App({ Component, pageProps }) {
   const [showNav, setShowNav] = useState(false);
@@ -32,7 +33,7 @@ export default function App({ Component, pageProps }) {
     <SessionProvider session={pageProps.session}>
       <Provider store={store}>
         <LocalizationProvider dateAdapter={AdapterMoment}>
-          {showNav ? <Navbar /> : null}
+          {showNav ? <MiniDrawer /> : null}
           <Component {...pageProps} />
         </LocalizationProvider>
       </Provider>
